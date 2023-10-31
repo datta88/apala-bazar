@@ -2,9 +2,9 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import User from './models/user.js';
-import c from './models/product.js';
-import Products from './models/product.js';
 dotenv.config();
+import Products from './models/product.js';
+import Order from "./models/order.js";
 
 const app = express();
 app.use(express.json());
@@ -14,7 +14,8 @@ const connectDB = async () => {
     if (conn) {
         console.log(`MongoBD connected `)
     }
-}
+};
+
 app.post('/signup', async (req, res) => {
     const { name, email, password, mobile, address, gender } = req.body
 
@@ -45,6 +46,7 @@ app.post('/signup', async (req, res) => {
     }
 
 });
+
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
     if (!email || !password) {
@@ -165,12 +167,102 @@ app.delete('/product/:_id', async (req, res) => {
 
 app.get('/searchProduct', async (req, res) => {
     const { q } = req.query;
-    const searchpro = await Products.find({ name: { $regex: q, $options: 'i' } })
+    const searchpro = await Products.findOne({ name: { $regex: q, $options: 'i' } })
     res.json({
         success: true,
         data: searchpro,
         message: 'Product searched SuccessFully .'
     })
+});
+
+// -----Post order ------
+app.post('/order', async (req, res) => {
+    const { user, product, status, deleveryCharges, orderShippting, quantity } = req.body;
+
+    const orderProduct = new Order({
+        user,
+        product,
+        status,
+        deleveryCharges,
+        orderShippting,
+        quantity
+    })
+
+    try {
+        const saved = await orderProduct.save();
+        res.json({
+            success: true,
+            data: saved,
+            message: 'Product successfully .'
+        })
+    }
+    catch (e) {
+        res.json({
+            success: false,
+            message: e.message
+        })
+    }
+});
+
+//-----get one fetched-------
+app.get('/order/:id', async (req, res) => {
+
+    const { id } = req.params;
+    const orderOne = await Order.findOne({ _id: id }).populate('user product')
+
+    orderOne.user.password = undefined;
+    res.json({
+        success: true,
+        data: orderOne,
+        message: "Order fetched successfully . "
+    })
+});
+
+//----get all product feched-------
+app.get('/orders', async (req, res) => {
+    const orders = await Order.find().populate('user product')
+    orders.forEach((e) =>{
+        e.user.password = undefined;
+    })
+
+    res.json({
+        success: true,
+        data: orders,
+        message: 'order feched successfully .'
+    })
+})
+
+//-----get fine by user ------
+app.get('/userorder/:_id',async (req,res)=>{
+    const {_id} = req.params;
+    const userOrder = await Order.find({user:{_id:_id}}).populate('user product');
+
+    userOrder.forEach((e)=>{
+        e.user.password = undefined;
+    });
+
+    res.json({
+        success : true,
+        data : userOrder,
+        message : 'Order of user founds successfully'
+    })
+})
+
+//-----patch status------
+app.patch('/order/:_id', async (req,res)=>{
+    const {_id}=req.params;
+    const {_status} = req.body;
+
+   await Order.updateOne({_id:_id},{$set:{_status : _status}})
+    const orderStatus = await Order.findOne({_id:_id});
+
+        res.json({
+            success:true,
+            data:orderStatus,
+            message:'order Update successfully'
+        });
+   
+
 })
 
 

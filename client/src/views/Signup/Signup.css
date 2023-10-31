@@ -1,0 +1,29 @@
+.signup-container{
+    height: 700px;
+    width: fit-content;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 1px #33cccc;
+    padding: 10px 30px;
+    margin: 10px auto;
+}
+
+.input-box{
+    margin: 10px;
+    font-size: 20px;
+    padding: 10px 15px;
+    width: 350px;
+    border-radius: 7px;
+}
+.gender-container{
+    display: flex;
+    align-items: center;
+    margin: 10px auto;
+}
+.lable-signup{
+    font-size: 25px;
+}
+.btn-signup{
+margin: 30px auto;
+display: block;
+}
