@@ -1,0 +1,21 @@
+.buy-card-container{
+    display: flex;
+    margin: 50px;
+    border: 1px solid red;
+}
+.buy-img-container{
+    height: 500px;
+    width: 500px;
+}
+.buy-card-text-container{
+    margin: 20px 50px;
+}
+.buy-card-input-con{
+    padding: 15px 30px;
+    width: 350px;
+    border-radius: 10px;
+    font-size: 25px;
+}
+.quntity-container-buy{
+    display: flex;
+}

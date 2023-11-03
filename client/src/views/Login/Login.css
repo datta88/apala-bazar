@@ -1,0 +1,14 @@
+.input-box-login{
+    margin: 10px;
+    font-size: 20px;
+    padding: 10px 15px;
+    width: 350px;
+    border-radius: 7px;
+}
+.margin-con{
+    margin-top: 150px;
+}
+.btn-login{
+    margin: 30px auto;
+    display: block;
+    }

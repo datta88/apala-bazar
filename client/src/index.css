@@ -1,5 +1,7 @@
 body{
     background-color: #ebfafa;
+    margin: 0;
+    padding: 0;
 }
 .text-center{
     text-align: center;
@@ -12,4 +14,16 @@ body{
     background-color: #248f8f;
     color: #fff;
     cursor: pointer;
+}
+.lable-font{
+    font-size: 25px;
+}
+.form-container{
+    height: fit-content;
+    width: fit-content;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 1px #33cccc;
+    padding: 30px 30px;
+    margin: 30px auto;
 }

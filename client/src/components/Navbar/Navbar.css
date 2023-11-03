@@ -1,0 +1,56 @@
+.navbar-container{
+    background-color: black;
+    color: white;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.all-containt{
+    display: flex;
+    justify-content: space-around;
+
+    }
+    .space{
+        margin-left: 200px;
+    }
+    .font{
+        font-size: 25px;
+        color: white;
+        text-decoration: none;
+      
+    }
+    .font:hover{
+        color: gold;
+    }
+    .navbar-logout{
+        text-decoration: none;
+        color: white;
+        font-size: 20px;
+        margin: 0 10px;
+        cursor: pointer;
+    }
+@media screen and (max-width: 768px) {
+    .navbar-container{
+        background-color: black;
+        color: white;
+        padding: 20px 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: start;
+    }
+    .space{
+       
+        display: block;
+        margin-left: 0px;
+        padding: 20px 0;
+    }
+    .all-containt{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: start;
+    
+        }
+}

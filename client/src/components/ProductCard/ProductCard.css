@@ -1,0 +1,32 @@
+.product-card-container{
+width: 400px;
+height: fit-content;
+padding: 20px 15px;
+background-color: #fff;
+box-shadow: 0 0 5px 1px rgb(4, 95, 122);
+margin: 50px;
+border-radius: 10px;
+}
+.product-image{
+    height: 250px;
+    width: 250px;
+    /* border-radius: 50%; */
+    /* border: 1px dotted black;
+    padding: 10px ; */
+    display: block;
+    margin: 30px auto;
+}
+.product-name{
+    font-weight: 400;
+}
+.product-des{
+    font-weight: 500;
+    font-size: 25px;
+}
+.product-price{
+    font-size: 30px;
+}
+.product-btn{
+    display: block;
+    margin: 0 auto;
+}
