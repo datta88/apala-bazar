@@ -1,11 +1,17 @@
 .buy-card-container{
     display: flex;
+    align-items: center;
+    padding: 20px;
+    background:#fff;
+    border-radius: 20px;
     margin: 50px;
-    border: 1px solid red;
+    /* border: 1px solid #007a99; */
+    box-shadow: 0 0 5px #007a99;
 }
 .buy-img-container{
-    height: 500px;
-    width: 500px;
+    height: 400px;
+    width: 400px;
+    border-radius: 20px;
 }
 .buy-card-text-container{
     margin: 20px 50px;
@@ -15,7 +21,46 @@
     width: 350px;
     border-radius: 10px;
     font-size: 25px;
+    border: none;
+    box-shadow: 0 0 5px #007a99;
 }
 .quntity-container-buy{
     display: flex;
+    margin-left: 20px;
+    /* border: 1px solid red; */
+    align-items: center;
+}
+.span-buy{
+    margin:0px 50px ;
+    /* box-shadow: 0 0 5px 0; */
+    padding: 10px;
+}
+.span-buy:hover{
+    box-shadow: 0 0 5px 0;
+    padding: 10px;
+    cursor: pointer;
+}
+.quntity-container{
+    box-shadow: 0 0 5px 0;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 30px;
+    border-radius: 20px;
+}
+
+.buy-font-size{
+    font-weight: 400;
+}
+.radio-but-charges{
+    display: flex;
+}
+.input-container-buy{
+    margin-left: 30px;
+}
+.quntity-container-buy-input{
+    display: flex;
+    justify-content: space-around;
+    /* border :1px solid red; */
+    align-items:baseline;
+    width: 800px;
 }

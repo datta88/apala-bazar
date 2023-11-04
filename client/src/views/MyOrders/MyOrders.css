@@ -1,0 +1,51 @@
+.myorder-box{
+    padding: 10px 50px;
+    margin: 50px 50px;
+   height: fit-content;
+    border-radius: 20px;
+    box-shadow: 0 0 5px 0 #00ccff ;
+    background-color: #fff;
+    position: relative;
+    flex-wrap: wrap;
+}
+.font-family1{
+    font-weight: 400;
+    color: #000;
+}
+.order-status{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color:#ccf5ff;
+    padding: 0px 50px;
+    border-radius: 0 20px 0 10px;
+    font-size: 13px;
+    cursor: pointer;
+}
+.order-id-container{
+    border-bottom: 1px solid black;
+    width: fit-content;
+    display: block;
+    margin: 0 auto;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+.link-container{
+    text-decoration: none;
+    font-size: 35px;
+}
+.badge-danger{
+    background: red;
+    padding: 3px 10px;
+    border-radius: 15px;
+}
+.badge-warning{
+    background: orange;
+    padding: 3px 10px;
+    border-radius: 15px;
+}
+.badge-success{
+    background-color: green;
+    padding: 3px 10px;
+    border-radius: 15px;
+}

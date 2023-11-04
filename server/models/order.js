@@ -23,11 +23,6 @@ const orderSchema = new Schema({
     status:{
         type:String,
        default:"pending"
-    },
-    quantity:{
-        type:Number,
-        required:true,
-        default :1
     }
 },
 {

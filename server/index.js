@@ -169,7 +169,7 @@ app.delete('/product/:_id', async (req, res) => {
 
 app.get('/searchProduct', async (req, res) => {
     const { q } = req.query;
-    const searchpro = await Products.findOne({ name: { $regex: q, $options: 'i' } })
+    const searchpro = await Products.find({ name: { $regex: q, $options: "i" } });
     res.json({
         success: true,
         data: searchpro,
@@ -223,7 +223,7 @@ app.get('/order/:id', async (req, res) => {
 //----get all product feched-------
 app.get('/orders', async (req, res) => {
     const orders = await Order.find().populate('user product')
-    orders.forEach((e) =>{
+    orders.forEach((e) => {
         e.user.password = undefined;
     })
 
@@ -234,39 +234,61 @@ app.get('/orders', async (req, res) => {
     })
 })
 
-//-----get fine by user ------
-app.get('/userorder/:_id',async (req,res)=>{
-    const {_id} = req.params;
-    const userOrder = await Order.find({user:{_id:_id}}).populate('user product');
+// get /order/user/:_id
+app.get('/userorder/:_id', async (req, res) => {
+    const { _id } = req.params;
+    const userOrders = await Order.find({ user: { _id: _id } }).populate('user product');
 
-    userOrder.forEach((e)=>{
+    userOrders.forEach((e) => {
         e.user.password = undefined;
     });
 
     res.json({
-        success : true,
-        data : userOrder,
-        message : 'Order of user founds successfully'
+        success: true,
+        data: userOrders,
+        message: 'Order of user founds successfully'
     })
 })
 
-//-----patch status------
-app.patch('/order/:_id', async (req,res)=>{
-    const {_id}=req.params;
-    const {_status} = req.body;
+// update status ------
+app.patch("/order/status/:id", async (req, res) => {
+    const { status } = req.body;
 
-   await Order.updateOne({_id:_id},{$set:{_status : _status}})
-    const orderStatus = await Order.findOne({_id:_id});
+    const { id } = req.params;
 
-        res.json({
-            success:true,
-            data:orderStatus,
-            message:'order Update successfully'
-        });
-   
+    const STATUS_PRIORITY_MAP = {
+        pending: 0,
+        shipped: 1,
+        dilivered: 2,
+        return: 3,
+        rejected: 4
+    }
 
-})
+    const order = await Order.findById(id)
 
+    const currentStatus = order.status;
+
+    const currentPriority = STATUS_PRIORITY_MAP[currentStatus];
+
+    const newPririty = STATUS_PRIORITY_MAP[status]
+
+    if (currentPriority > newPririty) {
+        return res.json({
+            success: true,
+            message: `${status}cannot be set once order is${currentStatus}`
+        })
+    }
+
+    await Order.updateOne({ _id: id }, { $set: { status: status } });
+
+    const updatedStatus = await Order.findOne({ _id: id });
+
+    res.json({
+        success: "true",
+        data: updatedStatus,
+        message: "order status updated successfully..!",
+    });
+});
 
 const PORT = process.env.PORT || 5000;
 

@@ -3,3 +3,11 @@
     justify-content: space-evenly;
     flex-wrap:wrap;
 }
+.home-input-search{
+    font-size: 25px;
+    padding: 15px;
+    margin: 50px auto;
+    display: block;
+    border-radius: 30px;
+    width: 600px;
+}

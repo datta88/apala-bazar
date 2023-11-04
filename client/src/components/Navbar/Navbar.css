@@ -1,5 +1,5 @@
 .navbar-container{
-    background-color: black;
+    background-color: #1f7a7a;
     color: white;
     padding: 20px 40px;
     display: flex;
@@ -32,7 +32,7 @@
     }
 @media screen and (max-width: 768px) {
     .navbar-container{
-        background-color: black;
+        background-color:#00a3cc;
         color: white;
         padding: 20px 40px;
         display: flex;

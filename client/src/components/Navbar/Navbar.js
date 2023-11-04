@@ -25,13 +25,13 @@ function Navbar() {
 
 
                 <div>
-                    <p className='font'>Hello{user.name || "user!"}</p>
+                    <p className='font'>Hello   {user.name || "user!"}</p>
 
                     {
-                        user?.name ? (<span className="navbar-logout" onClick={() => {
+                        user?.name ? <span className="navbar-logout" onClick={() => {
                             localStorage.removeItem("user");
                             window.location.href = "/login";
-                        }}>LogOut</span>) : null
+                        }}>LogOut</span> : null
                     }
                 </div>
             </div>
